@@ -18,6 +18,18 @@ const getNewToken = async ({ email, password }) => {
     : null;
 };
 
+const addUser = async ({ displayName, email, password, image }) => {
+  try {
+    const newUser = await User.create({ displayName, email, password, image });
+    return jwt.sign(
+      { data: newUser.dataValues.email },
+      process.env.JWT_SECRET,
+      jwtConfig,
+    );
+  } catch (_e) { return null; }
+};
+
 module.exports = {
   getNewToken,
+  addUser,
 };
