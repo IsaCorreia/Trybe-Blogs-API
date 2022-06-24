@@ -4,12 +4,14 @@ const userController = require('./controllers/userController');
 const categoryController = require('./controllers/categoryController.js');
 const middlewaresIndex = require('./middlewares/middlewaresIndex');
 
+// LOGIN routes
 router.post(
   '/login',
   middlewaresIndex.validateLogin,
   userController.getNewToken,
 );
 
+// USER routes
 router.get('/user', middlewaresIndex.validateToken, userController.getAllUsers);
 router.get(
   '/user/:id',
