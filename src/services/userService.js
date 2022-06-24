@@ -29,7 +29,18 @@ const addUser = async ({ displayName, email, password, image }) => {
   } catch (_e) { return null; }
 };
 
+const getAllUsers = async () => {
+  const users = await User.findAll();
+  return users.map(({ dataValues: { id, displayName, email, image } }) => ({
+    id,
+    displayName,
+    email,
+    image,
+  }));
+};
+
 module.exports = {
   getNewToken,
   addUser,
+  getAllUsers,
 };
