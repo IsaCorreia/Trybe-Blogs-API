@@ -1,11 +1,12 @@
 "use strict";
 
-const Categories = (sequelize, DataTypes) => {
-  const Categories = sequelize.define( "Category", {
-    id: {type: DataTypes.INTEGER, primaryKey: true},
+const Category = (sequelize, DataTypes) => {
+  const Category = sequelize.define("Category", {
+    id: { type: DataTypes.INTEGER, primaryKey: true },
     name: DataTypes.STRING,
   });
-  return Categories;
+
+  return Category;
 };
 
-module.exports = Categories;
+module.exports = Category;
