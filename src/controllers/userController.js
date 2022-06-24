@@ -22,7 +22,13 @@ const addUser = async (req, res) => {
       });
 };
 
+const getAllUsers = async (req, res) => {
+  const users = await userService.getAllUsers();
+  return res.status(HTTP_OK_STATUS).json(users);
+};
+
 module.exports = {
   getNewToken,
   addUser,
+  getAllUsers,
 };
