@@ -11,6 +11,11 @@ router.get('/user/:id', middlewaresIndex.validateToken, userController.getUserBy
 router.post('/user', middlewaresIndex.validateNewUser, userController.addUser);
 
 // CATEGORIES routes
+router.get(
+  '/categories',
+  middlewaresIndex.validateToken,
+  categoryController.getAllCategories,
+);
 router.post(
   '/categories',
   middlewaresIndex.validateToken,
