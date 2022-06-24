@@ -39,8 +39,16 @@ const getAllUsers = async () => {
   }));
 };
 
+const getUserById = async ({ id: userId }) => {
+  try {
+    const { id, displayName, email, image } = await User.findOne({ where: { id: userId } });
+    return { id, displayName, email, image };
+  } catch (e) { return null; }
+};
+
 module.exports = {
   getNewToken,
   addUser,
   getAllUsers,
+  getUserById,
 };
