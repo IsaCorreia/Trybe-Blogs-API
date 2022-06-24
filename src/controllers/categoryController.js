@@ -1,4 +1,4 @@
-const { HTTP_CREATED_STATUS } = require('../helpers/httpStatusCodes');
+const { HTTP_CREATED_STATUS, HTTP_OK_STATUS } = require('../helpers/httpStatusCodes');
 const categoryService = require('../services/categoryService.js');
 
 const addCategory = async (req, res) => {
@@ -6,4 +6,9 @@ const addCategory = async (req, res) => {
   return res.status(HTTP_CREATED_STATUS).json({ id, name });
 };
 
-module.exports = { addCategory };
+const getAllCategories = async (req, res) => {
+  const categories = await categoryService.getAllCategories();
+  return res.status(HTTP_OK_STATUS).json(categories);
+};
+
+module.exports = { addCategory, getAllCategories };
