@@ -11,7 +11,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         primaryKey: true,
         references: { model: "Categories", key: "id" },
-        references: {model: 'Categories', key: 'id'}
       }
     });
   },
