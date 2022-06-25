@@ -10,6 +10,13 @@ const addPost = async (req, res) => {
   return res.status(HTTP_CREATED_STATUS).json(newPost);
 };
 
+const getAllPosts = async (req, res) => {
+  const posts = await postService.getAllPosts();
+  return res.status(HTTP_OK_STATUS).json(posts);
+};
+
+const getPostById = async (req, res) => {
 module.exports = {
   addPost,
+  getAllPosts,
 };
