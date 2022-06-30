@@ -1,5 +1,7 @@
 const { BlogPost, User, Category } = require('../database/models');
 
+const addPost = (body) => body;
+
 const getAllPosts = async () => {
   const posts = await BlogPost.findAll({
     include: [
@@ -40,6 +42,7 @@ const getPostById = async ({ id: postId }) => {
 };
 
 module.exports = {
+  addPost,
   getAllPosts,
   getPostById,
 };
