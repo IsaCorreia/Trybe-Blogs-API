@@ -23,19 +23,20 @@ const getPostById = async ({ id: postId }) => {
     const post = await BlogPost.findOne({
       where: { id: postId },
       include: [
-        { model: User, as: 'user' },
-        // { model: PostCategory, as: 'categories' },
+        {
+          model: User,
+          as: 'user',
+          attributes: { exclude: ['password'] },
+        },
+        {
+          model: Category,
+          as: 'categories',
+          through: { attributes: [] },
+        },
       ],
     });
-    const { id, displayName, email, image } = post.dataValues.user.dataValues;
-    const result = {
-      ...post.dataValues,
-      user: { id, displayName, email, image },
-    };
-    return result;
-  } catch (_e) {
-    return null;
-  }
+    return post;
+  } catch (_e) { return null; }
 };
 
 module.exports = {
